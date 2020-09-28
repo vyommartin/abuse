@@ -9,11 +9,10 @@
   <p align="center">
 Classify whether an email is spam or not.
     <br />
-    <a href=" https://abhay31-email-spam.herokuapp.com/"><strong>View Project»</strong></a>
+    <a href=" https://abhay31-email-spam.herokuapp.com/">View Project»</a>
     <br />
     <br />
     <a href="https://github.com/Abhayparashar31/email_spam">Explore Codes</a>
-    ·
     <a>Report Bug -> parasharabhay13@gmail.com</a>
     
   </p>
