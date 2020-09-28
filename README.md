@@ -4,7 +4,7 @@
     <img src="static/profile.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center"> **Email Spam Classification Using ML** </h3>
+  <h3 align="center"> 👉Email Spam Classification Using ML👈 </h3>
 
   <p align="center">
 Classify whether an email is spam or not.
