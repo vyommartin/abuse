@@ -1,7 +1,7 @@
 <br />
 <p align="center">
-  <a href="https://github.com/github_Abhayparashar/Diabetes-prediction">
-    <img src="images/profile.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/github_Abhayparashar/email_spam">
+    <img src="static/profile.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center"> **Email Spam Classification Using ML** </h3>
@@ -19,7 +19,7 @@ Classify whether an email is spam or not.
   </p>
 </p>
 <a href="https://github.com/github_Abhayparashar/email-spam">
-    <img src="static/spam.gif" alt="Demo">
+    <img src="static/demo.gif" alt="Demo">
   </a>
 
 
