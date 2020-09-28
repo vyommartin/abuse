@@ -18,10 +18,11 @@ Classify whether an email is spam or not.
     
   </p>
 </p>
+<p align='center'>
 <a href="https://github.com/github_Abhayparashar/email-spam">
-    <img src="static/demo.gif" alt="Demo">
+    <img src="static/demo.gif" alt="Demo" width="100" height="100">
   </a>
-
+</p>
 
 Get It working on Your Side
  * Clone repo
