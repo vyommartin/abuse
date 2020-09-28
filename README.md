@@ -20,7 +20,7 @@ Classify whether an email is spam or not.
 </p>
 <p align='center'>
 <a href="https://github.com/github_Abhayparashar/email-spam">
-    <img src="static/demo.gif" alt="Demo" width="200" height="200">
+    <img src="static/demo.gif" alt="Demo" width="400" height="250">
   </a>
 </p>
 
