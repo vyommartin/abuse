@@ -1,7 +1,27 @@
-## Email Spam Classification Using ML
-Visit : https://abhay31-email-spam.herokuapp.com/
+<br />
+<p align="center">
+  <a href="https://github.com/github_Abhayparashar/Diabetes-prediction">
+    <img src="images/profile.png" alt="Logo" width="80" height="80">
+  </a>
 
-![Project-Image](https://github.com/Abhayparashar31/email_spam/tree/master/static/spam.gif)
+  <h3 align="center"> **Email Spam Classification Using ML** </h3>
+
+  <p align="center">
+Classify whether an email is spam or not.
+    <br />
+    <a href=" https://abhay31-email-spam.herokuapp.com/"><strong>View Project»</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/Abhayparashar31/email_spam">Explore Codes</a>
+    ·
+    <a>Report Bug -> parasharabhay13@gmail.com</a>
+    
+  </p>
+</p>
+<a href="https://github.com/github_Abhayparashar/email-spam">
+    <img src="static/spam.gif" alt="Demo">
+  </a>
+
 
 Get It working on Your Side
  * Clone repo
