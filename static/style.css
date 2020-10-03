@@ -14,13 +14,12 @@ body{
   	flex-direction: column;
 }
 
-/* Website Title */
 .container{
 	padding: 30px;
 	position: relative;
 	background: linear-gradient(45deg, #ffffff, #ffffff, #f9f9f9, #eeeeee, #e0e4e1, #d7e1ec);
 	background-size: 500% 500%;
-	animation: change-gradient 10s ease-in-out infinite;
+	animation: change-gradient 5s ease-in-out infinite;
 }
 @keyframes change-gradient {
 	0%{
@@ -42,11 +41,6 @@ body{
     color: #ff0000;
 }
 
-.description p{
-    font-style: italic;
-    font-size: 14px;
-    margin: 3px 0 0;
-}
 
 /* Text Area */
 .ml-container{
@@ -87,9 +81,9 @@ body{
 	padding: 20px;
 	flex-shrink: 0;
 	position: relative;
-	background: linear-gradient(45deg, #ffffff, #ffffff, #f9f9f9, #eeeeee, #e0e4e1, #d7e1ec);
+	background: linear-gradient(60deg, #ffffff, #ffffff, #f9f9f9, #eeeeee, #e0e4e1, #d7e1ec);
 	background-size: 500% 500%;
-	animation: change-gradient 10s ease-in-out infinite;
+	animation: change-gradient 5s ease-in-out infinite;
 }
 
 .contact-icon{
