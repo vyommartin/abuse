@@ -35,9 +35,9 @@ device_cuda = torch.device("cpu")
 metrics = [{'name': 'accuracy', 'function': accuracy}]
 
 async def setup_learner():
-    await download_file(pretrained_link, '/vyommartin/abuse/blob/master' / modelname)
+    await download_file(pretrained_link, '/vyommartin/abuse/tree/master/data/' + modelname)
     try:
-        data_bunch = BertDataBunch('/vyommartin/abuse/blob/master/', '/vyommartin/abuse/blob/master/',
+        data_bunch = BertDataBunch('/vyommartin/abuse/tree/master/bruh', '/vyommartin/abuse/tree/master/bruh',
                            tokenizer = '/vyommartin/abuse/blob/master/'
                            train_file = 'train.csv',
                            val_file = 'valid.csv',
@@ -50,7 +50,7 @@ async def setup_learner():
                            multi_label = False,
                            model_type = 'bert')   
         learner = BertLearner.from_pretrained_model(data_bunch, 
-                                            pretrained_path = '/vyommartin/abuse/blob/master/',
+                                            pretrained_path = '/vyommartin/abuse/tree/master/data',
                                             metrics = metrics,
                                             device = device_cuda,
                                             logger = logger,
