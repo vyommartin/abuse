@@ -2,7 +2,6 @@ from flask import Flask,render_template,request
 import pickle
 from fast_bert.data_cls import BertDataBunch
 from fast_bert.learner_cls import BertLearner
-from fast_bert.learner_cls import BertLearner
 from fast_bert.metrics import accuracy
 import logging
 import torch
