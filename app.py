@@ -26,8 +26,8 @@ async def download_file(url, dest):
                 
 pretrained_link = "https://www.googleapis.com/drive/v3/files/1-00f28mlffM2uPJVJDY94K1aOy9LfJw1?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
 modelname = 'pytorch_model.bin'
-modelpath = Path('/vyommartin/abuse/data/')
-datapath = Path('/vyommartin/abuse/bruh/')
+modelpath = Path('/abuse/data/')
+datapath = Path('/abuse/bruh/')
                 
 
 logger = logging.getLogger()
@@ -35,7 +35,7 @@ device_cuda = torch.device("cpu")
 metrics = [{'name': 'accuracy', 'function': accuracy}]
 
 async def setup_learner():
-    await download_file(pretrained_link, Path('/vyommartin/abuse/data'))
+    await download_file(pretrained_link, Path('/abuse/data/pytorch_model.bin'))
     try:
         data_bunch = BertDataBunch(datapath, datapath,
                            tokenizer = modelpath,
