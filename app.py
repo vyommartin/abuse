@@ -7,6 +7,7 @@ import logging
 import aiohttp
 import asyncio
 import uvicorn
+import pathlib
 import numpy
 from io import BytesIO
 from starlette.applications import Starlette
@@ -25,8 +26,8 @@ async def download_file(url, dest):
                 
 pretrained_link = "https://www.googleapis.com/drive/v3/files/1-00f28mlffM2uPJVJDY94K1aOy9LfJw1?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
 modelname = 'pytorch_model.bin'
-modelpath = Path('/vyommartin/abuse/tree/master/data/')
-datapath = Path('/vyommartin/abuse/tree/master/bruh/')
+modelpath = Path('/vyommartin/abuse/data/')
+datapath = Path('/vyommartin/abuse/bruh/')
                 
 
 logger = logging.getLogger()
