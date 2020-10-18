@@ -15,7 +15,6 @@ from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 import torch
 
-app = Flask(__name__)
 
 path = Path(__file__).parent
 
@@ -58,11 +57,14 @@ async def setup_learner():
                                             is_fp16 = False)
         return learner                
                 
+        
 
+app = Flask(__name__)
 
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/predict',methods=['POST'])
 def predict():
