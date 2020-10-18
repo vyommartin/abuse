@@ -8,6 +8,8 @@ import aiohttp
 import asyncio
 import uvicorn
 from pathlib import Path
+import os
+from os import *
 import numpy
 from io import BytesIO
 from starlette.applications import Starlette
@@ -39,8 +41,8 @@ metrics = [{'name': 'accuracy', 'function': accuracy}]
 async def setup_learner():
     await download_file(pretrained_link, path / 'pytorch_model.bin')
     try:
-        data_bunch = BertDataBunch(datapath, datapath,
-                           tokenizer = modelpath,
+        data_bunch = BertDataBunch(path, path,
+                           tokenizer = path,
                            train_file = 'train.csv',
                            val_file = 'valid.csv',
                            label_file = 'l2 (1).csv',
@@ -53,7 +55,7 @@ async def setup_learner():
                            model_type = 'bert') 
         
         learner = BertLearner.from_pretrained_model(data_bunch,
-                                                    pretrained_path = modelpath,
+                                                    pretrained_path = path,
                                                     metrics = metrics,
                                                     device = device_cuda,
                                                     logger = logger,
