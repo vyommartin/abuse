@@ -3,10 +3,8 @@ import pickle
 from fast_bert.data_cls import BertDataBunch
 from fast_bert.learner_cls import BertLearner
 from fast_bert.metrics import accuracy
-import logging
 import aiohttp
 import asyncio
-import uvicorn
 from pathlib import Path
 import os
 from os import *
@@ -31,22 +29,20 @@ async def download_file(url, dest):
 pretrained_link = "https://www.googleapis.com/drive/v3/files/1-00f28mlffM2uPJVJDY94K1aOy9LfJw1?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
 modelname = 'pytorch_model.bin'
                 
-logger = logging.getLogger()
-
-async def setup_learner():
-    await download_file(pretrained_link, path / modelname)
-    try:
-        data_bunch = BertDataBunch(path, path,
+data_bunch = BertDataBunch(path, path,
                            tokenizer = path,
                            train_file = None,
                            val_file = None,
-                           label_file = 'l2.csv',
+                           label_file = 'l2 (1).csv',
                            batch_size_per_gpu = 120,
                            max_seq_length = 40,
                            multi_gpu = False,
                            multi_label = False,
                            model_type = 'bert') 
-        
+    
+async def setup_learner():
+    await download_file(pretrained_link, path / modelname)
+    try:       
         learner = BertLearner.from_pretrained_model(data_bunch, 
                                             pretrained_path = path,
                                             metrics = [],
@@ -65,7 +61,6 @@ async def setup_learner():
                 
 
 @app.route('/')
-
 def home():
     return render_template('index.html')
 
