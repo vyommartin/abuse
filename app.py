@@ -16,6 +16,8 @@ from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 import torch
 
+path = Path(__file__).parent
+
 async def download_file(url, dest):
     if dest.exists(): return
     async with aiohttp.ClientSession() as session:
@@ -35,7 +37,7 @@ device_cuda = torch.device("cpu")
 metrics = [{'name': 'accuracy', 'function': accuracy}]
 
 async def setup_learner():
-    await download_file(pretrained_link, Path('abuse/data/'))
+    await download_file(pretrained_link, path / 'pytorch_model.bin')
     try:
         data_bunch = BertDataBunch(datapath, datapath,
                            tokenizer = modelpath,
