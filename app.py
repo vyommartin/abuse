@@ -40,7 +40,17 @@ token = 'tokenizer_config.json'
 config = 'config.json'
 l2 = 'l2.csv'
 
-data_bunch = BertDataBunch(path, path,
+
+    
+async def setup_learner():
+    await download_file(pretrained_link, path / modelname),
+    await download_file(vocablink, path / vocab),
+    await download_file(sptokenlink, path / sptoken),
+    await download_file(tokenlink, path / token),
+    await download_file(configlink, path / config),
+    await download_file(l2link, path / l2)
+    try:
+        data_bunch = BertDataBunch(path, path,
                            tokenizer = path,
                            train_file = None,
                            val_file = None,
@@ -50,15 +60,7 @@ data_bunch = BertDataBunch(path, path,
                            multi_gpu = False,
                            multi_label = False,
                            model_type = 'bert') 
-    
-async def setup_learner():
-    await download_file(pretrained_link, path / modelname),
-    await download_file(vocablink, path / vocab),
-    await download_file(sptokenlink, path / sptoken),
-    await download_file(tokenlink, path / token),
-    await download_file(configlink, path / config),
-    await download_file(l2link, path / l2)
-    try:       
+        
         learner = BertLearner.from_pretrained_model(data_bunch, 
                                             pretrained_path = path,
                                             metrics = [],
