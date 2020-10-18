@@ -7,7 +7,7 @@ import logging
 import aiohttp
 import asyncio
 import uvicorn
-import pathlib
+from pathlib import Path
 import numpy
 from io import BytesIO
 from starlette.applications import Starlette
