@@ -47,25 +47,33 @@ async def setup_learner():
                            max_seq_length = 40,
                            multi_gpu = True,
                            multi_label = False,
-                           model_type = 'bert')   
-        learner = BertLearner.from_pretrained_model(data_bunch, 
-                                            pretrained_path = '/vyommartin/abuse/tree/master/data',
-                                            metrics = metrics,
-                                            device = device_cuda,
-                                            logger = logger,
-                                            output_dir = "/vyommartin/abuse/blob/master/",
-                                            is_fp16 = False)
-        return learner                
-                
+                           model_type = 'bert') 
         
+        learner = BertLearner.from_pretrained_model(data_bunch,
+                                                    pretrained_path = '/vyommartin/abuse/tree/master/data',
+                                                    metrics = metrics,
+                                                    device = device_cuda,
+                                                    logger = logger,
+                                                    output_dir = "/vyommartin/abuse/blob/master/",
+                                                    is_fp16 = False)
+        return learner 
+    except RuntimeError as e:
+        if len(e.args) > 0 and 'CPU-only machine' in e.args[0]:
+            print(e)
+            message = "\n\nThis model was trained with an old version of fastai and will not work in a CPU environment."
+            raise RuntimeError(message)
+            else:
+                raise
+                
+loop = asyncio.get_event_loop()
+tasks = [asyncio.ensure_future(setup_learner())]
+learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
+loop.close()
 
-app = Flask(__name__)
 
 @app.route('/')
 def home():
     return render_template('index.html')
-
-
 @app.route('/predict',methods=['POST'])
 def predict():
     if request.method=='POST':
