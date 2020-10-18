@@ -30,45 +30,31 @@ async def download_file(url, dest):
                 
 pretrained_link = "https://www.googleapis.com/drive/v3/files/1-00f28mlffM2uPJVJDY94K1aOy9LfJw1?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
 modelname = 'pytorch_model.bin'
-modelpath = Path('abuse/data/')
-datapath = Path('abuse/bruh/')
                 
-
 logger = logging.getLogger()
-device_cuda = torch.device("cpu")
-metrics = [{'name': 'accuracy', 'function': accuracy}]
 
 async def setup_learner():
-    await download_file(pretrained_link, path / 'pytorch_model.bin')
+    await download_file(pretrained_link, path / modelname)
     try:
         data_bunch = BertDataBunch(path, path,
                            tokenizer = path,
-                           train_file = 'train.csv',
-                           val_file = 'valid.csv',
-                           label_file = 'l2 (1).csv',
-                           text_col = 'text',
-                           label_col = 'isoffensive',
+                           train_file = None,
+                           val_file = None,
+                           label_file = 'l2.csv',
                            batch_size_per_gpu = 120,
                            max_seq_length = 40,
-                           multi_gpu = True,
+                           multi_gpu = False,
                            multi_label = False,
                            model_type = 'bert') 
         
-        learner = BertLearner.from_pretrained_model(data_bunch,
-                                                    pretrained_path = path,
-                                                    metrics = metrics,
-                                                    device = device_cuda,
-                                                    logger = logger,
-                                                    output_dir = modelpath,
-                                                    is_fp16 = False)
+        learner = BertLearner.from_pretrained_model(data_bunch, 
+                                            pretrained_path = path,
+                                            metrics = [],
+                                            device = 'cpu',
+                                            logger = None,
+                                            output_dir = None,
+                                            is_fp16 = False)
         return learner 
-    except RuntimeError as e:
-        if len(e.args) > 0 and 'CPU-only machine' in e.args[0]:
-            print(e)
-            message = "\n\nThis model was trained with an old version of fastai and will not work in a CPU environment."
-            raise RuntimeError(message)
-        else:
-            raise
                 
 loop = asyncio.get_event_loop()
 tasks = [asyncio.ensure_future(setup_learner())]
@@ -79,6 +65,7 @@ loop.close()
 @app.route('/')
 def home():
     return render_template('index.html')
+
 @app.route('/predict',methods=['POST'])
 def predict():
     if request.method=='POST':
