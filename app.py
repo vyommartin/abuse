@@ -35,7 +35,7 @@ device_cuda = torch.device("cpu")
 metrics = [{'name': 'accuracy', 'function': accuracy}]
 
 async def setup_learner():
-    await download_file(pretrained_link, Path('/vyommartin/abuse/data/pytorch_model.bin'))
+    await download_file(pretrained_link, Path('/vyommartin/abuse/data'))
     try:
         data_bunch = BertDataBunch(datapath, datapath,
                            tokenizer = modelpath,
