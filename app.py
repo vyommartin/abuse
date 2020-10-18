@@ -15,9 +15,6 @@ from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 import torch
 
-
-path = Path(__file__).parent
-
 async def download_file(url, dest):
     if dest.exists(): return
     async with aiohttp.ClientSession() as session:
