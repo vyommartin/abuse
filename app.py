@@ -38,7 +38,7 @@ async def setup_learner():
     await download_file(pretrained_link, '/vyommartin/abuse/tree/master/data/' + modelname)
     try:
         data_bunch = BertDataBunch('/vyommartin/abuse/tree/master/bruh', '/vyommartin/abuse/tree/master/bruh',
-                           tokenizer = '/vyommartin/abuse/blob/master/'
+                           tokenizer = '/vyommartin/abuse/blob/master/',
                            train_file = 'train.csv',
                            val_file = 'valid.csv',
                            label_file = 'l2 (1).csv',
