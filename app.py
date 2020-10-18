@@ -62,8 +62,8 @@ async def setup_learner():
             print(e)
             message = "\n\nThis model was trained with an old version of fastai and will not work in a CPU environment."
             raise RuntimeError(message)
-            else:
-                raise
+        else:
+            raise
                 
 loop = asyncio.get_event_loop()
 tasks = [asyncio.ensure_future(setup_learner())]
