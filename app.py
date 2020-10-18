@@ -25,16 +25,19 @@ async def download_file(url, dest):
                 
 pretrained_link = "https://www.googleapis.com/drive/v3/files/1-00f28mlffM2uPJVJDY94K1aOy9LfJw1?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
 modelname = 'pytorch_model.bin'
+modelpath = Path('/vyommartin/abuse/tree/master/data/')
+datapath = Path('/vyommartin/abuse/tree/master/bruh/')
+                
 
 logger = logging.getLogger()
 device_cuda = torch.device("cpu")
 metrics = [{'name': 'accuracy', 'function': accuracy}]
 
 async def setup_learner():
-    await download_file(pretrained_link, '/vyommartin/abuse/tree/master/data/' + modelname)
+    await download_file(pretrained_link, modelpath + modelname)
     try:
-        data_bunch = BertDataBunch('/vyommartin/abuse/tree/master/bruh', '/vyommartin/abuse/tree/master/bruh',
-                           tokenizer = '/vyommartin/abuse/blob/master/',
+        data_bunch = BertDataBunch(datapath, datapath,
+                           tokenizer = modelpath,
                            train_file = 'train.csv',
                            val_file = 'valid.csv',
                            label_file = 'l2 (1).csv',
@@ -47,11 +50,11 @@ async def setup_learner():
                            model_type = 'bert') 
         
         learner = BertLearner.from_pretrained_model(data_bunch,
-                                                    pretrained_path = '/vyommartin/abuse/tree/master/data',
+                                                    pretrained_path = modelpath,
                                                     metrics = metrics,
                                                     device = device_cuda,
                                                     logger = logger,
-                                                    output_dir = "/vyommartin/abuse/blob/master/",
+                                                    output_dir = modelpath,
                                                     is_fp16 = False)
         return learner 
     except RuntimeError as e:
