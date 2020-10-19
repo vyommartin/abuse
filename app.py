@@ -10,13 +10,9 @@ import os
 from os import *
 import numpy
 from io import BytesIO
-from starlette.applications import Starlette
-from starlette.middleware.cors import CORSMiddleware
-from starlette.responses import HTMLResponse, JSONResponse
-from starlette.staticfiles import StaticFiles
 import torch
 
-path = Path(__file__).parent
+path = Path('/opt/render/project/src/')
 
 async def download_file(url, dest):
     if dest.exists(): return
@@ -26,29 +22,29 @@ async def download_file(url, dest):
             with open(dest, 'wb') as f:
                 f.write(data)
                 
-l2link = 'https://www.googleapis.com/drive/v3/files/1YY-85GBK_TRK50B5YqXogn6d69qfmCdc?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA'
+#l2link = 'https://www.googleapis.com/drive/v3/files/1YY-85GBK_TRK50B5YqXogn6d69qfmCdc?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA'
 pretrained_link = "https://www.googleapis.com/drive/v3/files/1-00f28mlffM2uPJVJDY94K1aOy9LfJw1?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
-vocablink = "https://www.googleapis.com/drive/v3/files/1-BYV3NlKGhD32Srbb0fe15WAlkLTMCVh?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
-sptokenlink = "https://www.googleapis.com/drive/v3/files/1-2Zf_PjqNLeo0QMLmAGLmhMJ5GTxJux6?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
-tokenlink = "https://www.googleapis.com/drive/v3/files/1-5Bx9rIaq24_3niulnuvABK0wDbl4Bzu?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
-configlink = "https://www.googleapis.com/drive/v3/files/1-1XqYH-5DYKKNiTM8h5WTPQFRNAZtVAy?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
+#vocablink = "https://www.googleapis.com/drive/v3/files/1-BYV3NlKGhD32Srbb0fe15WAlkLTMCVh?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
+#sptokenlink = "https://www.googleapis.com/drive/v3/files/1-2Zf_PjqNLeo0QMLmAGLmhMJ5GTxJux6?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
+#tokenlink = "https://www.googleapis.com/drive/v3/files/1-5Bx9rIaq24_3niulnuvABK0wDbl4Bzu?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
+#configlink = "https://www.googleapis.com/drive/v3/files/1-1XqYH-5DYKKNiTM8h5WTPQFRNAZtVAy?alt=media&key=AIzaSyArebv-g7_CgQUjKftzGkgeHhtHivaR4TA"
 
 modelname = 'pytorch_model.bin'
-vocab = 'vocab.txt'
-sptoken = 'special_tokens_map.json'
-token = 'tokenizer_config.json'
-config = 'config.json'
-l2 = 'l2.csv'
+#vocab = 'vocab.txt'
+#sptoken = 'special_tokens_map.json'
+#token = 'tokenizer_config.json'
+#config = 'config.json'
+#l2 = 'l2.csv'
 
 
     
 async def setup_learner():
     await download_file(pretrained_link, path / modelname),
-    await download_file(vocablink, path / vocab),
-    await download_file(sptokenlink, path / sptoken),
-    await download_file(tokenlink, path / token),
-    await download_file(configlink, path / config),
-    await download_file(l2link, path / l2)
+    #await download_file(vocablink, path / vocab),
+    #await download_file(sptokenlink, path / sptoken),
+    #await download_file(tokenlink, path / token),
+    #await download_file(configlink, path / config),
+    #await download_file(l2link, path / l2)
     try:
         data_bunch = BertDataBunch(path, path,
                            tokenizer = path,
